@@ -71,7 +71,7 @@ export class JSEncryptRSAKey extends RSAKey {
             let asn1 = ASN1.decode(der);
 
             // Fixes a bug with OpenSSL 1.0+ private keys
-            if (asn1.sub.length === 3) {
+            if (asn1.sub.length === 3 || asn1.sub.length === 4) {
                 asn1 = asn1.sub[2].sub[0];
             }
             if (asn1.sub.length === 9) {
