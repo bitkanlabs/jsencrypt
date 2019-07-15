@@ -4947,7 +4947,7 @@ var JSEncryptRSAKey = /** @class */ (function (_super) {
             var der = reHex.test(pem) ? Hex.decode(pem) : Base64.unarmor(pem);
             var asn1 = ASN1.decode(der);
             // Fixes a bug with OpenSSL 1.0+ private keys
-            if (asn1.sub.length === 3) {
+            if (asn1.sub.length === 3 || asn1.sub.length === 4) {
                 asn1 = asn1.sub[2].sub[0];
             }
             if (asn1.sub.length === 9) {
@@ -5356,7 +5356,7 @@ var JSEncrypt = /** @class */ (function () {
         // Return the private representation of this key.
         return this.getKey().getPublicBaseKeyB64();
     };
-    JSEncrypt.version = "3.0.1-rc.1";
+    JSEncrypt.version = "3.0.1-rc.2";
     return JSEncrypt;
 }());
 
